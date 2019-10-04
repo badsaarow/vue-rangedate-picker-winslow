@@ -51,8 +51,8 @@ const defaultPresets = function (i18n = defaultI18n) {
   return {
     today: function () {
       const n = new Date()
-      const startToday = new Date(n.getFullYear(), n.getMonth(), n.getDate() + 1, 0, 0)
-      const endToday = new Date(n.getFullYear(), n.getMonth(), n.getDate() + 1, 23, 59)
+      const startToday = new Date(n.getFullYear(), n.getMonth(), n.getDate(), 0, 0)
+      const endToday = new Date(n.getFullYear(), n.getMonth(), n.getDate(), 23, 59)
       return {
         label: presetRangeLabel[i18n].today,
         active: false,
@@ -64,8 +64,8 @@ const defaultPresets = function (i18n = defaultI18n) {
     },
     thisMonth: function () {
       const n = new Date()
-      const startMonth = new Date(n.getFullYear(), n.getMonth(), 2)
-      const endMonth = new Date(n.getFullYear(), n.getMonth() + 1, 1)
+      const startMonth = new Date(n.getFullYear(), n.getMonth(), 1)
+      const endMonth = new Date(n.getFullYear(), n.getMonth() + 1, 0)
       return {
         label: presetRangeLabel[i18n].thisMonth,
         active: false,
@@ -77,8 +77,8 @@ const defaultPresets = function (i18n = defaultI18n) {
     },
     lastMonth: function () {
       const n = new Date()
-      const startMonth = new Date(n.getFullYear(), n.getMonth() - 1, 2)
-      const endMonth = new Date(n.getFullYear(), n.getMonth(), 1)
+      const startMonth = new Date(n.getFullYear(), n.getMonth() - 1, 1)
+      const endMonth = new Date(n.getFullYear(), n.getMonth(), 0)
       return {
         label: presetRangeLabel[i18n].lastMonth,
         active: false,
@@ -87,12 +87,11 @@ const defaultPresets = function (i18n = defaultI18n) {
           end: endMonth
         }
       }
-    }
-    /* last7days: function () {
-      // todo: fix how last N days is calculated since this is wrong and doesn't calculate properly due to start/end of months add/subtracting dates doesn't change the current month
+    },
+    last7days: function () {
       const n = new Date()
       const start = new Date(n.getFullYear(), n.getMonth(), n.getDate() - 6)
-      const end = new Date(n.getFullYear(), n.getMonth(), n.getDate() + 1)
+      const end = new Date(n.getFullYear(), n.getMonth(), n.getDate())
       return {
         label: presetRangeLabel[i18n].lastSevenDays,
         active: false,
@@ -103,10 +102,9 @@ const defaultPresets = function (i18n = defaultI18n) {
       }
     },
     last30days: function () {
-      // todo: fix how last N days is calculated since this is wrong and doesn't calculate properly due to start/end of months add/subtracting dates doesn't change the current month
       const n = new Date()
-      const start = new Date(n.getFullYear(), n.getMonth(), n.getDate() - 29)
-      const end = new Date(n.getFullYear(), n.getMonth(), n.getDate() + 1)
+      const start = new Date(n.getFullYear(), n.getMonth(), n.getDate() - 30)
+      const end = new Date(n.getFullYear(), n.getMonth(), n.getDate())
       return {
         label: presetRangeLabel[i18n].lastThirtyDays,
         active: false,
@@ -115,7 +113,7 @@ const defaultPresets = function (i18n = defaultI18n) {
           end: end
         }
       }
-    } */
+    }
   }
 }
 
